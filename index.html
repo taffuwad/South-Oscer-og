@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SouthOscer | Premium Fitness Club</title>
+<meta name="description" content="The First Corporate Boutique Gym in Dhaka. Building the Foundation to Wellness.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Icons -->
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <div class="preloader-text" id="preloader-text"></div>
+</div>
+
+<!-- Navigation -->
+<header class="navbar" id="navbar">
+  <a href="#home" class="logo" data-link><span>SOUTH</span><span>OSCER</span></a>
+  
+  <nav class="nav-links">
+    <a href="#home" class="nav-link" data-link data-text="HOME"><span>HOME</span></a>
+    <a href="#programs" class="nav-link" data-link data-text="PROGRAMS"><span>PROGRAMS</span></a>
+    <a href="#team" class="nav-link" data-link data-text="TEAM"><span>TEAM</span></a>
+    <a href="#gallery" class="nav-link" data-link data-text="GALLERY"><span>GALLERY</span></a>
+    <a href="#membership" class="nav-link" data-link data-text="MEMBERSHIP"><span>MEMBERSHIP</span></a>
+    <a href="#contact" class="nav-link" data-link data-text="CONTACT"><span>CONTACT</span></a>
+  </nav>
+
+  <div class="nav-socials">
+    <a href="#" aria-label="Facebook"><i class="ri-facebook-fill"></i></a>
+    <a href="#" aria-label="Instagram"><i class="ri-instagram-line"></i></a>
+    <a href="#" aria-label="WhatsApp"><i class="ri-whatsapp-line"></i></a>
+  </div>
+
+  <div class="mobile-toggle" id="mobile-toggle"><i class="ri-menu-3-line"></i></div>
+</header>
+
+<!-- Mobile Drawer -->
+<div class="mobile-drawer" id="mobile-drawer">
+  <a href="#home" data-link>HOME</a>
+  <a href="#programs" data-link>PROGRAMS</a>
+  <a href="#team" data-link>TEAM</a>
+  <a href="#gallery" data-link>GALLERY</a>
+  <a href="#membership" data-link>MEMBERSHIP</a>
+  <a href="#contact" data-link>CONTACT</a>
+</div>
+
+<!-- Rep Counter -->
+<div class="rep-counter" id="rep-counter">
+  <div class="num" id="rep-num">000</div>
+  <div class="line" id="rep-line"></div>
+</div>
+
+<!-- Main App Container -->
+<main id="app">
+
+  <!-- ================= HOME VIEW ================= -->
+  <section class="page" id="view-home" data-route="home">
+    <!-- Hero -->
+    <div class="hero">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-media">
+        <!-- STAND-IN: Original gym background video/image missing -->
+        <video muted loop autoplay src="assets/videos/Transform_image_into_gym_video_9324175f (1).mp4"></video>
+      </div>
+      <div class="container hero-content">
+        <div class="hero-subtitle">The First Corporate Boutique Gym in Dhaka</div>
+        <h1 class="split-text" data-split>Oscer: Building<br>the Foundation<br>to Wellness</h1>
+        <div style="margin-top: 40px;">
+          <a href="#membership" data-link class="btn">Be A Member <i class="ri-arrow-right-line"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marquee -->
+    <div class="marquee-wrap">
+      <div class="marquee-track">
+        <div class="marquee-item">FULLY EQUIPPED GYM <span>///</span></div>
+        <div class="marquee-item">PERSONAL TRAINING <span>///</span></div>
+        <div class="marquee-item">DEDICATED LADIES FLOOR <span>///</span></div>
+        <div class="marquee-item">PUNCHING BAG <span>///</span></div>
+        <div class="marquee-item">MODERN FACILITIES <span>///</span></div>
+        <div class="marquee-item">FULLY EQUIPPED GYM <span>///</span></div>
+        <div class="marquee-item">PERSONAL TRAINING <span>///</span></div>
+        <div class="marquee-item">DEDICATED LADIES FLOOR <span>///</span></div>
+      </div>
+    </div>
+
+    <!-- About / Leadership -->
+    <section class="section container">
+      <div class="grid-2">
+        <div>
+          <span class="eyebrow">Leadership</span>
+          <h2 class="split-text" data-split>A Transformative<br>Journey</h2>
+          <p style="margin-bottom: 24px;">Spearheaded by our Executive Director since 2021, SouthOscer underwent a complete corporate boutique transformation. We bridge the gap between high-end hospitality and intense physical training.</p>
+          <p>Operating in Gulshan for over 7 years, our 4-story facility is designed for professionals who demand the best from their environment and themselves.</p>
+          
+          <div class="leadership-block">
+            <h4>Nibras Panni</h4>
+            <p>Executive Director</p>
+          </div>
+        </div>
+        <div class="img-reveal" data-img-reveal>
+          <!-- STAND-IN: Manager photo missing -->
+          <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=1200&auto=format&fit=crop" alt="SouthOscer Leadership" style="height: 600px; object-fit: cover;">
+        </div>
+      </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="quote-section">
+      <div class="container">
+        <h2 class="quote-text split-text" data-split>"You don't become strong by waiting."</h2>
+        <p class="quote-author">— Alisa Zone, Executive Director</p>
+      </div>
+    </section>
+
+    <!-- Story -->
+    <section class="section container">
+      <div class="grid-2">
+        <div>
+          <span class="eyebrow">The Story</span>
+          <h2 class="split-text" data-split>Gulshan's<br>Hidden Gem</h2>
+          <p>Located next to Quality Inn Hotel, SouthOscer offers a club-like atmosphere that redefines the typical gym experience. From the moment you walk through the doors, you are enveloped in an environment designed for focus, discipline, and luxury.</p>
+        </div>
+        <div>
+          <ul class="checklist">
+            <li><i class="ri-building-4-line"></i> 4-Story Dedicated Building</li>
+            <li><i class="ri-women-line"></i> Dedicated Ladies Floor</li>
+            <li><i class="ri-shield-check-line"></i> Hygienic Environment & Premium Sanitization</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D Room Wheel -->
+    <section class="section wheel-section" id="wheel-section">
+      <div class="container" style="text-align: center;">
+        <span class="eyebrow" style="justify-content: center;">Explore the Space</span>
+        <h2 class="split-text" data-split>The Rooms</h2>
+        
+        <div class="wheel-container">
+          <div class="wheel-track" id="wheel-track">
+            <!-- Cards injected via JS -->
+          </div>
+        </div>
+
+        <div class="wheel-controls">
+          <button class="wheel-btn" id="wheel-prev"><i class="ri-arrow-left-line"></i></button>
+          <button class="wheel-btn" id="wheel-next"><i class="ri-arrow-right-line"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="container" style="padding-bottom: 120px;">
+      <div class="stats-band">
+        <div class="stat-item">
+          <div class="stat-num" data-count="7">7+</div>
+          <div class="stat-label">Years in Gulshan</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="4">4</div>
+          <div class="stat-label">Dedicated Floors</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="8">8</div>
+          <div class="stat-label">Premium Amenities</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num" data-count="1">1</div>
+          <div class="stat-label">Corporate Community</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BMI Calculator -->
+    <section class="section container">
+      <div class="bmi-box">
+        <div>
+          <span class="eyebrow">Know Your Baseline</span>
+          <h2 class="split-text" data-split>BMI Calculator</h2>
+          <p style="margin-bottom: 40px;">A starting point, not a verdict — your coach builds the real plan.</p>
+          
+          <div class="input-group">
+            <label for="height">Height (cm)</label>
+            <input type="number" id="height" placeholder="175" min="100" max="250">
+          </div>
+          <div class="input-group">
+            <label for="weight">Weight (kg)</label>
+            <input type="number" id="weight" placeholder="70" min="30" max="200">
+          </div>
+          <button class="btn" id="calc-bmi" style="width: 100%;">Calculate</button>
+        </div>
+        <div class="bmi-result">
+          <div class="bmi-gauge" id="bmi-gauge">
+            <div class="bmi-value" id="bmi-value">--</div>
+          </div>
+          <div class="bmi-category" id="bmi-category">Awaiting Input</div>
+          <p class="bmi-note">Categories based on WHO standard BMI ranges.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section container" style="text-align: center; border-top: 1px solid var(--border);">
+      <h2 class="split-text" data-split style="font-size: clamp(40px, 8vw, 100px);">Ready to build<br>your foundation?</h2>
+      <div style="margin-top: 40px;">
+        <a href="#contact" data-link class="btn">Contact the Front Desk <i class="ri-arrow-right-line"></i></a>
+      </div>
+    </section>
+  </section>
+
+  <!-- ================= PROGRAMS VIEW ================= -->
+  <section class="page" id="view-programs" data-route="programs">
+    <div class="section container" style="padding-top: 200px;">
+      <span class="eyebrow">Discipline</span>
+      <h1 class="split-text" data-split>Train With Intent</h1>
+      <p style="margin-top: 24px; font-size: 18px;">Our programs are designed around the spaces and equipment available at SouthOscer. No invented schedules — just the work.</p>
+    </div>
+
+    <div class="section container" style="padding-top: 0;">
+      <div class="grid-3">
+        <div class="program-card">
+          <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=800&auto=format&fit=crop" alt="Strength">
+          <h3>Strength</h3>
+          <p>Free weights and machines across our dedicated Weights and Gym Floor areas.</p>
+          <ul>
+            <li>Fully Equipped Gym access</li>
+            <li>Certified coaches available</li>
+            <li>Devoted admin support</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=800&auto=format&fit=crop" alt="Cardio">
+          <h3>Cardio</h3>
+          <p>Dedicated Cardio Floor for endurance and conditioning.</p>
+          <ul>
+            <li>Cardio Floor access</li>
+            <li>Modern Facilities</li>
+            <li>Personal Training integration</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=800&auto=format&fit=crop" alt="Personal Training">
+          <h3>Personal Training</h3>
+          <p>One-on-one coaching built around your specific goals.</p>
+          <ul>
+            <li>Certified Trainers</li>
+            <li>Custom Diet Plan</li>
+            <li>Accountability programming</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?q=80&w=800&auto=format&fit=crop" alt="Yoga">
+          <h3>Yoga & Mobility</h3>
+          <p>Dedicated space for recovery, flexibility, and focus.</p>
+          <ul>
+            <li>Yoga Room access</li>
+            <li>Personal Training integration</li>
+            <li>Hygienic Environment</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=800&auto=format&fit=crop" alt="Boxing">
+          <h3>Boxing / Punching Bag</h3>
+          <p>High-intensity conditioning using our punching bag facilities.</p>
+          <ul>
+            <li>Punching Bag access</li>
+            <li>Trainer supervision</li>
+            <li>Modern Facilities</li>
+          </ul>
+        </div>
+        <div class="program-card">
+          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=800&auto=format&fit=crop" alt="Ladies Floor">
+          <h3>Ladies-Only Floor</h3>
+          <p>A dedicated, private floor for women to train comfortably.</p>
+          <ul>
+            <li>Dedicated Ladies Floor</li>
+            <li>Fully Equipped Gym</li>
+            <li>Certified female coaches available</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div style="margin-top: 60px; padding: 30px; border: 1px solid var(--border); background: var(--surface);">
+        <p style="margin: 0; font-size: 14px;"><i class="ri-information-line" style="color: var(--accent);"></i> No timetable is published. Please ask the front desk for current class availability.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEAM VIEW ================= -->
+  <section class="page" id="view-team" data-route="team">
+    <div class="section container" style="padding-top: 200px;">
+      <span class="eyebrow">Our Experts</span>
+      <h1 class="split-text" data-split>The People Behind<br>Your Progress</h1>
+    </div>
+
+    <div class="section container" style="padding-top: 0;">
+      <h2 class="split-text" data-split>Team of Trainers</h2>
+      <p style="margin-bottom: 40px;">Certified coaches who build programming, technique and accountability around every single member.</p>
+      
+      <div class="grid-3">
+        <div class="team-card">
+          <h3>Trainer Group</h3>
+          <span class="role">Certified Coaches</span>
+          <p>Our trainers operate across the Gym Floor, Weights area, and Yoga space, delivering Personal Training and Diet Plans tailored to your goals.</p>
+        </div>
+        <div class="team-card">
+          <h3>Trainer Group</h3>
+          <span class="role">Certified Coaches</span>
+          <p>Our trainers operate across the Gym Floor, Weights area, and Yoga space, delivering Personal Training and Diet Plans tailored to your goals.</p>
+        </div>
+        <div class="team-card">
+          <h3>Trainer Group</h3>
+          <span class="role">Certified Coaches</span>
+          <p>Our trainers operate across the Gym Floor, Weights area, and Yoga space, delivering Personal Training and Diet Plans tailored to your goals.</p>
+        </div>
+      </div>
+
+      <h2 class="split-text" data-split style="margin-top: 100px;">Team of Administrators</h2>
+      <p style="margin-bottom: 40px;">The people behind the daily gym experience — front desk, operations and everything that keeps the floor running.</p>
+      
+      <div class="grid-3">
+        <div class="team-card">
+          <h3>Admin Group</h3>
+          <span class="role">Operations</span>
+          <p>Managing the 4-story facility, ensuring the hygienic environment, and overseeing the dedicated ladies floor operations.</p>
+        </div>
+        <div class="team-card">
+          <h3>Admin Group</h3>
+          <span class="role">Front Desk</span>
+          <p>Your first point of contact. Handling membership enquiries, guest passes, and keeping the club atmosphere premium.</p>
+        </div>
+        <div class="team-card">
+          <h3>Admin Group</h3>
+          <span class="role">Devoted Admin</span>
+          <p>Dedicated to the daily operations and facility maintenance across all floors, ensuring a seamless member experience.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 80px; padding: 40px; border: 1px solid var(--border); background: var(--surface); text-align: center;">
+        <h3>Join the Team</h3>
+        <p style="margin: 10px auto 20px;">We are always looking for dedicated professionals.</p>
+        <a href="#contact" data-link class="btn btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GALLERY VIEW ================= -->
+  <section class="page" id="view-gallery" data-route="gallery">
+    <div class="section container" style="padding-top: 200px;">
+      <span class="eyebrow">Visual Tour</span>
+      <h1 class="split-text" data-split>Gallery of<br>SouthOscer</h1>
+    </div>
+
+    <div class="section container" style="padding-top: 0;">
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- Images injected via JS -->
+      </div>
+
+      <!-- FAQ -->
+      <div style="margin-top: 120px; max-width: 900px;">
+        <span class="eyebrow">Clarity</span>
+        <h2 class="split-text" data-split>FAQ</h2>
+        
+        <div class="faq-item">
+          <button class="faq-q">What are the opening hours? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Opening hours are confirmed on enquiry — call or message the club.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Where is southoscer located? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>House-8, Road-50, Gulshan-2 (Next to Quality Inn Hotel), Dhaka – 1212, Bangladesh.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What facilities are available? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Fully Equipped Gym, Personal Training, Diet Plan, Dedicated Ladies Floor, Punching Bag, Modern Facilities, Lockers, and a Devoted Admin Team.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you offer personal training? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Yes. Our certified coaches build programming, technique and accountability around every single member.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Can I visit the gym before becoming a member? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Please contact the front desk to arrange a visit and trial.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Do you have membership plans? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Yes. Please see our Membership page or contact the club for pricing details.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is there a dedicated ladies' fitness area? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Yes, we have a fully equipped, dedicated Ladies Floor.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How can I contact southoscer? <i class="ri-add-line"></i></button>
+          <div class="faq-a"><p>Email info@southoscer.com or use the contact form on our website.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MEMBERSHIP VIEW ================= -->
+  <section class="page" id="view-membership" data-route="membership">
+    <div class="section container" style="padding-top: 200px;">
+      <span class="eyebrow">Commitment</span>
+      <h1 class="split-text" data-split>Be A Member</h1>
+      <p style="margin-top: 24px; font-size: 18px;">Choose the tier that matches your discipline. All plans include full access to our 4-story facility.</p>
+    </div>
+
+    <div class="section container" style="padding-top: 0;">
+      <div class="plan-grid">
+        <div class="plan-card">
+          <div class="plan-name">Foundation</div>
+          <div class="plan-price">On enquiry</div>
+          <ul class="plan-features">
+            <li><i class="ri-check-line"></i> Fully Equipped Gym</li>
+            <li><i class="ri-check-line"></i> Cardio Floor</li>
+            <li><i class="ri-check-line"></i> Locker Access</li>
+            <li><i class="ri-check-line"></i> Devoted Admin Team</li>
+          </ul>
+          <a href="#contact" data-link class="btn btn-outline plan-btn">Enquire Now</a>
+        </div>
+        <div class="plan-card featured">
+          <div class="plan-name">Performance</div>
+          <div class="plan-price">On enquiry</div>
+          <ul class="plan-features">
+            <li><i class="ri-check-line"></i> Everything in Foundation</li>
+            <li><i class="ri-check-line"></i> Personal Training (intro)</li>
+            <li><i class="ri-check-line"></i> Custom Diet Plan</li>
+            <li><i class="ri-check-line"></i> Punching Bag Area</li>
+            <li><i class="ri-check-line"></i> Yoga Space Access</li>
+          </ul>
+          <a href="#contact" data-link class="btn plan-btn">Enquire Now</a>
+        </div>
+        <div class="plan-card">
+          <div class="plan-name">Corporate</div>
+          <div class="plan-price">On enquiry</div>
+          <ul class="plan-features">
+            <li><i class="ri-check-line"></i> Everything in Performance</li>
+            <li><i class="ri-check-line"></i> Dedicated Ladies Floor</li>
+            <li><i class="ri-check-line"></i> Priority Training Slots</li>
+            <li><i class="ri-check-line"></i> Exclusive Corporate Rates</li>
+          </ul>
+          <a href="#contact" data-link class="btn btn-outline plan-btn">Enquire Now</a>
+        </div>
+      </div>
+      
+      <div style="margin-top: 60px; padding: 30px; border: 1px solid var(--border); background: var(--surface); text-align: center;">
+        <p style="margin: 0; font-size: 14px;"><i class="ri-information-line" style="color: var(--accent);"></i> Prices are confirmed on enquiry — call or message the club. No online checkout available.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT VIEW ================= -->
+  <section class="page" id="view-contact" data-route="contact">
+    <div class="section container" style="padding-top: 200px;">
+      <span class="eyebrow">Reach Out</span>
+      <h1 class="split-text" data-split>Get In Touch</h1>
+    </div>
+
+    <div class="section container" style="padding-top: 0;">
+      <div class="contact-grid">
+        <div>
+          <h2 class="split-text" data-split>Let's build your<br>foundation.</h2>
+          <p style="margin-bottom: 40px;">Whether you're ready to join or just have a few questions, our team is here to help you take the first step.</p>
+          
+          <div class="contact-info-item">
+            <i class="ri-map-pin-line"></i>
+            <div>
+              <h4>Location</h4>
+              <p>House-8, Road-50, Gulshan-2<br>(Next to Quality Inn Hotel)<br>Dhaka – 1212, Bangladesh</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="ri-mail-line"></i>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:info@southoscer.com">info@southoscer.com</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="ri-phone-line"></i>
+            <div>
+              <h4>Phone</h4>
+              <!-- TODO: Replace with real phone number -->
+              <p style="color: var(--accent);">+8801 XX XXX XXXX</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <form id="contact-form">
+            <div class="form-group">
+              <input type="text" id="name" placeholder=" " required>
+              <label for="name">Full Name</label>
+            </div>
+            <div class="form-group">
+              <input type="tel" id="phone" placeholder=" " required>
+              <label for="phone">Phone Number</label>
+            </div>
+            <div class="form-group">
+              <input type="email" id="email" placeholder=" " required>
+              <label for="email">Email Address</label>
+            </div>
+            <div class="form-group">
+              <textarea id="message" placeholder=" " required></textarea>
+              <label for="message">Message</label>
+            </div>
+            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+            <div class="form-status" id="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 404 VIEW ================= -->
+  <section class="page" id="view-404" data-route="404">
+    <div class="page-404">
+      <h1>404</h1>
+      <p>This rep doesn't count.</p>
+      <a href="#home" data-link class="btn">Back to Home</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-watermark" id="footer-watermark">SOUTHOSCER</div>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#home" class="logo" data-link><span>SOUTH</span><span>OSCER</span></a>
+        <p>The First Corporate Boutique Gym in Dhaka. Building the Foundation to Wellness.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#home" data-link>Home</a></li>
+          <li><a href="#programs" data-link>Programs</a></li>
+          <li><a href="#team" data-link>Team</a></li>
+          <li><a href="#gallery" data-link>Gallery</a></li>
+          <li><a href="#membership" data-link>Membership</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="mailto:info@southoscer.com">info@southoscer.com</a></li>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 SouthOscer. All rights reserved.</div>
+      <div>Demo website. <a href="#contact" data-link>Contact for details.</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- Lightbox Modal -->
+<div class="lightbox" id="lightbox">
+  <i class="ri-close-line lb-close" id="lb-close"></i>
+  <i class="ri-arrow-left-s-line lb-btn lb-prev" id="lb-prev"></i>
+  <img src="" alt="" id="lb-img">
+  <i class="ri-arrow-right-s-line lb-btn lb-next" id="lb-next"></i>
+  <div class="lb-counter" id="lb-counter">01 / 16</div>
+</div>
+
+<!-- JS Libraries -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -111,19 +111,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('hashchange', handleRoute);
 
-  // Initialize page specific logic
+  // Track SplitText instances for clean cleanup & responsive resizing
+  let activeSplits = [];
+
   function initPageAnimations(route) {
     ScrollTrigger.getAll().forEach(t => t.kill()); // Cleanup
 
-    // Global Text Reveals
+    // Revert previous text splits to restore original DOM text
+    activeSplits.forEach(s => {
+      try { s.revert(); } catch(e) {}
+    });
+    activeSplits = [];
+
+    // Global Text Reveals (use words,chars to allow natural responsive wrapping)
     const splitTexts = document.querySelectorAll(`#view-${route} .split-text`);
     splitTexts.forEach(el => {
-      const split = new SplitText(el, { type: 'lines,words,chars' });
-      gsap.fromTo(split.chars, 
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 1, stagger: 0.02, ease: 'power3.out', 
-          scrollTrigger: { trigger: el, start: 'top 85%' } }
-      );
+      try {
+        const split = new SplitText(el, { type: 'words,chars' });
+        activeSplits.push(split);
+        gsap.fromTo(split.chars, 
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, stagger: 0.015, ease: 'power3.out', 
+            scrollTrigger: { trigger: el, start: 'top 88%' } }
+        );
+      } catch(e) {
+        el.style.opacity = '1';
+      }
     });
 
     // Image Reveals
@@ -159,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (canvas) {
     const ctx = canvas.getContext('2d');
     let width, height, particles = [];
-    const maxParticles = 80;
+    const maxParticles = window.innerWidth < 768 ? 35 : 80;
     let mouse = { x: -1000, y: -1000 };
 
     function resize() {
@@ -170,6 +183,16 @@ document.addEventListener('DOMContentLoaded', () => {
     resize();
     window.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
     window.addEventListener('mouseout', () => { mouse.x = -1000; mouse.y = -1000; });
+    window.addEventListener('touchmove', e => {
+      if (e.touches && e.touches[0]) {
+        mouse.x = e.touches[0].clientX;
+        mouse.y = e.touches[0].clientY;
+      }
+    }, { passive: true });
+    window.addEventListener('touchend', () => {
+      mouse.x = -1000;
+      mouse.y = -1000;
+    });
 
     class Particle {
       constructor() {
@@ -220,7 +243,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const track = document.getElementById('wheel-track');
     if (!track) return;
     track.innerHTML = '';
-    const radius = 350;
+
+    function getRadius() {
+      if (window.innerWidth < 480) return 150;
+      if (window.innerWidth < 768) return 200;
+      if (window.innerWidth < 1024) return 270;
+      return 350;
+    }
+    let radius = getRadius();
     const angleStep = 360 / DATA.rooms.length;
     let currentAngle = 0;
     
@@ -257,19 +287,83 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     render();
 
+    window.addEventListener('resize', () => {
+      radius = getRadius();
+      render();
+    });
+
+    // Touch and drag swipe for mobile
+    let startX = 0;
+    let isTouching = false;
+    let startAngle = 0;
+    let hasMoved = false;
+
+    track.addEventListener('touchstart', (e) => {
+      if (!e.touches || !e.touches[0]) return;
+      startX = e.touches[0].clientX;
+      isTouching = true;
+      hasMoved = false;
+      startAngle = currentAngle;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e) => {
+      if (!isTouching || !e.touches || !e.touches[0]) return;
+      const diffX = e.touches[0].clientX - startX;
+      if (Math.abs(diffX) > 5) hasMoved = true;
+      currentAngle = startAngle + (diffX * 0.35);
+      render();
+    }, { passive: true });
+
+    track.addEventListener('touchend', () => {
+      if (!isTouching) return;
+      isTouching = false;
+      if (hasMoved) {
+        const targetAngle = Math.round(currentAngle / angleStep) * angleStep;
+        let proxy = { angle: currentAngle };
+        gsap.to(proxy, {
+          angle: targetAngle,
+          duration: 0.5,
+          ease: 'power3.out',
+          onUpdate: () => {
+            currentAngle = proxy.angle;
+            render();
+          }
+        });
+      }
+    });
+
+    // Clicking card rotates to front
+    cards.forEach((card, i) => {
+      card.addEventListener('click', () => {
+        if (hasMoved) return;
+        let targetAngle = -i * angleStep;
+        while (targetAngle - currentAngle > 180) targetAngle -= 360;
+        while (targetAngle - currentAngle < -180) targetAngle += 360;
+        let proxy = { angle: currentAngle };
+        gsap.to(proxy, {
+          angle: targetAngle,
+          duration: 0.7,
+          ease: 'power3.out',
+          onUpdate: () => {
+            currentAngle = proxy.angle;
+            render();
+          }
+        });
+      });
+    });
+
     document.getElementById('wheel-next')?.addEventListener('click', () => {
-      currentAngle -= angleStep;
-      gsap.to({}, { duration: 0.8, onUpdate: render }); // fake easing
-      // Real logic with proxy
-      let proxy = { angle: currentAngle + angleStep };
-      gsap.to(proxy, { angle: currentAngle, duration: 0.8, ease: 'power3.out', onUpdate: () => {
+      let targetAngle = currentAngle - angleStep;
+      let proxy = { angle: currentAngle };
+      gsap.to(proxy, { angle: targetAngle, duration: 0.8, ease: 'power3.out', onUpdate: () => {
         currentAngle = proxy.angle; render();
       }});
     });
 
     document.getElementById('wheel-prev')?.addEventListener('click', () => {
-      let proxy = { angle: currentAngle - angleStep };
-      gsap.to(proxy, { angle: currentAngle, duration: 0.8, ease: 'power3.out', onUpdate: () => {
+      let targetAngle = currentAngle + angleStep;
+      let proxy = { angle: currentAngle };
+      gsap.to(proxy, { angle: targetAngle, duration: 0.8, ease: 'power3.out', onUpdate: () => {
         currentAngle = proxy.angle; render();
       }});
     });
@@ -390,6 +484,27 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.key === 'ArrowLeft') document.getElementById('lb-prev').click();
       if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
     });
+
+    // Touch swipe for Lightbox on mobile
+    let lbTouchStartX = 0;
+    let lbTouchEndX = 0;
+    lb.addEventListener('touchstart', (e) => {
+      if (e.changedTouches && e.changedTouches[0]) {
+        lbTouchStartX = e.changedTouches[0].clientX;
+      }
+    }, { passive: true });
+
+    lb.addEventListener('touchend', (e) => {
+      if (e.changedTouches && e.changedTouches[0]) {
+        lbTouchEndX = e.changedTouches[0].clientX;
+        const diff = lbTouchEndX - lbTouchStartX;
+        if (diff < -40) {
+          document.getElementById('lb-next').click();
+        } else if (diff > 40) {
+          document.getElementById('lb-prev').click();
+        }
+      }
+    }, { passive: true });
   }
 
   // ============================================================
@@ -467,26 +582,50 @@ document.addEventListener('DOMContentLoaded', () => {
   const drawer = document.getElementById('mobile-drawer');
   let menuOpen = false;
 
+  function closeMenu() {
+    if (!menuOpen) return;
+    menuOpen = false;
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.innerHTML = '<i class="ri-menu-3-line"></i>';
+    lenis.start();
+  }
+
+  function openMenu() {
+    if (menuOpen) return;
+    menuOpen = true;
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.innerHTML = '<i class="ri-close-line"></i>';
+    lenis.stop();
+    gsap.fromTo('.mobile-drawer-links a, .mobile-drawer-socials a', 
+      { opacity: 0, y: 20 }, 
+      { opacity: 1, y: 0, stagger: 0.05, duration: 0.35, ease: 'power2.out' }
+    );
+  }
+
   toggle.onclick = () => {
-    menuOpen = !menuOpen;
-    drawer.classList.toggle('open', menuOpen);
-    toggle.innerHTML = menuOpen ? '<i class="ri-close-line"></i>' : '<i class="ri-menu-3-line"></i>';
     if (menuOpen) {
-      lenis.stop();
-      gsap.fromTo('.mobile-drawer a', { opacity: 0, y: 20 }, { opacity: 1, y: 0, stagger: 0.1, duration: 0.4 });
+      closeMenu();
     } else {
-      lenis.start();
+      openMenu();
     }
   };
 
-  // Close mobile drawer on link click
-  document.querySelectorAll('.mobile-drawer a').forEach(a => {
+  // Close mobile drawer on any link click
+  document.querySelectorAll('.mobile-drawer-links a, .mobile-drawer-socials a').forEach(a => {
     a.onclick = () => {
-      menuOpen = false;
-      drawer.classList.remove('open');
-      toggle.innerHTML = '<i class="ri-menu-3-line"></i>';
-      lenis.start();
+      closeMenu();
     };
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuOpen) {
+      closeMenu();
+    }
   });
 
   // Footer Watermark Parallax
@@ -498,6 +637,32 @@ document.addEventListener('DOMContentLoaded', () => {
       end: 'bottom top',
       scrub: true
     }
+  });
+
+  // Debounced window resize handler to update layout & recalculate text splits
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      if (window.innerWidth > 768 && menuOpen) {
+        closeMenu();
+      }
+      // Revert and recompute text splits for the new viewport width
+      activeSplits.forEach(s => {
+        try { s.revert(); } catch(e) {}
+      });
+      activeSplits = [];
+      if (currentRoute) {
+        const splitTexts = document.querySelectorAll(`#view-${currentRoute} .split-text`);
+        splitTexts.forEach(el => {
+          try {
+            const split = new SplitText(el, { type: 'words,chars' });
+            activeSplits.push(split);
+          } catch(e) {}
+        });
+      }
+      ScrollTrigger.refresh();
+    }, 200);
   });
 
 });
